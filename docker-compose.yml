@@ -1,0 +1,15 @@
+services:
+  voice-agent:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      # Override per environment; .env holds the rest (keys, providers, caps)
+      VA_HOST: 0.0.0.0
+      VA_PORT: "8080"
+    volumes:
+      # Keep per-call ledgers outside the container
+      - ./data:/app/data
+    restart: unless-stopped

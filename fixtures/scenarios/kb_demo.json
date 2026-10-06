@@ -1,0 +1,11 @@
+{
+  "id": "kb_demo",
+  "description": "Company knowledge base: caller asks about the return policy, agent searches the KB tool",
+  "expect_tools": ["search_company_kb"],
+  "expect_reply_contains": ["30 days"],
+  "utterances": [
+    {"audio": "en_greeting.wav", "text": "Hello, I need some help today."},
+    {"audio": "kb_returns.wav", "text": "What is your return policy?"},
+    {"audio": "en_bye.wav", "text": "Thank you, goodbye."}
+  ]
+}

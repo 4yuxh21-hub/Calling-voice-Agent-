@@ -1,0 +1,48 @@
+{
+  "tenant_id": "demo",
+  "dids": ["+9111234567890", "09613868663", "09513886363"],
+  "display_name": "Demo Voice Agent",
+  "language": "multi",
+  "system_prompt": "You are a friendly phone assistant for Demo Store. You speak English and Hindi/Hinglish as the caller prefers. Keep replies short (1-2 sentences), confirm what you heard, and use the provided tools to answer questions. For ANY question about the company (hours, policies, shipping, pricing, stores), search the knowledge base with search_company_kb and answer only from what it returns - never invent company details. You are an AI assistant; if asked, say so.",
+  "greeting": "Hello! Thanks for calling Demo Store. How can I help you today?",
+  "voice": {
+    "provider": "cartesia",
+    "voice_id": "",
+    "model": null
+  },
+  "filler_phrases": ["One moment...", "Let me check that for you..."],
+  "tools": [
+    {
+      "name": "get_order_status",
+      "description": "Look up the current status and delivery ETA of a customer's order.",
+      "parameters": {
+        "order_id": {
+          "type": "string",
+          "description": "The order identifier the customer is asking about"
+        }
+      },
+      "required": ["order_id"],
+      "read_only": true,
+      "binding": {},
+      "url": null,
+      "timeout_ms": 10000
+    },
+    {
+      "name": "lookup_customer",
+      "description": "Look up the calling customer's profile by their verified phone number.",
+      "parameters": {
+        "phone": {
+          "type": "string",
+          "description": "The customer's phone number (auto-filled from caller id)"
+        }
+      },
+      "required": ["phone"],
+      "read_only": true,
+      "binding": {
+        "phone": "caller_id"
+      },
+      "url": null,
+      "timeout_ms": 10000
+    }
+  ]
+}

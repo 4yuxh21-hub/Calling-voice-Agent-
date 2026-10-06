@@ -1,0 +1,11 @@
+{
+  "id": "hinglish_mixed",
+  "description": "Hinglish/English code-switching flow: Hinglish greeting, English order lookup, goodbye",
+  "expect_tools": ["get_order_status"],
+  "expect_reply_contains": ["shipped"],
+  "utterances": [
+    {"audio": "hi_greeting.wav", "text": "Namaste, mujhe madad chahiye."},
+    {"audio": "en_order.wav", "text": "Where is my order? It was placed two days ago."},
+    {"audio": "en_bye.wav", "text": "Thank you, goodbye."}
+  ]
+}
