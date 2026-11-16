@@ -43,8 +43,9 @@ def build_stt(settings: Settings):
             # Turn-end latency: default endpointing (~500ms) is too slow for
             # phone calls; VAD (200ms) + Smart Turn carry the real decision,
             # so Deepgram just needs to finalize transcripts quickly.
+            # NOTE: utterance_end_ms is rejected by the API for nova-3/multi
+            # (400 on connect) - verified empirically, don't re-add it.
             endpointing=200,
-            utterance_end_ms=500,
         ),
     )
 
